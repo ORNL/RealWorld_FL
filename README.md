@@ -59,17 +59,28 @@ AI methods that support cross-institutional scientific research.
 
 ## Lightning talks
 
-| # | Talk | Speaker | Affiliation |
-| -: | ---- | ------- | ----------- |
-| 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute |
-| 2 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory |
-| 3 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University |
-| 4 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte |
-| 5 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA |
-| 6 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories |
-| 7 | Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers | Yijiang Li | Argonne National Laboratory |
-| 8 | Towards Trustworthy Federated AI: Privacy, Ownership Protection, and Model Editing | Olivera Kotevska | Oak Ridge National Laboratory |
-| 9 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs |
+Slides are posted where the speaker has shared them.
+
+| # | Talk | Speaker | Affiliation | Slides |
+| -: | ---- | ------- | ----------- | ------ |
+| 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute | — |
+| 2 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | — |
+| 3 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University | — |
+| 4 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte | — |
+| 5 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA | **[PDF](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** |
+| 6 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | — |
+| 7 | Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers | Yijiang Li | Argonne National Laboratory | — |
+| 8 | Towards Trustworthy Federated AI: Privacy, Ownership Protection, and Model Editing | Olivera Kotevska | Oak Ridge National Laboratory | — |
+| 9 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | — |
+
+**Featured slides.** Holger Roth, Chester Chen, and Peter Cnudde (NVIDIA) shared their deck,
+[*Are You Ready for Production Federated Learning?*](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf) —
+a five-domain readiness framework (use case & value, governance & legal, data architecture, privacy &
+security, technology & operations) for judging whether a federation can move from pilot to production.
+Its closing question is a good one to carry forward: don't ask only *"can we train it?"* but *"can we
+operate it, audit it, and change it safely?"* Posted with the author's permission.
+
+Speakers: to add your deck here, send it to [kotevskao@ornl.gov](mailto:kotevskao@ornl.gov?subject=TPC26%20BOF%20slides).
 
 ## Get involved
 
@@ -82,8 +93,14 @@ federation without giving it up, get in touch.
 
 ---
 
-<sub>A styled, self-contained version of this page is in
-<a href="docs/index.html"><code>docs/index.html</code></a> — no build step, no external assets. GitHub
-shows it as source rather than rendering it; open the file locally, or enable GitHub Pages on the
-<code>docs/</code> folder to serve it at a public URL. See the
-<a href="https://tpc26.org/tpc26-sessions/">full TPC26 session listing</a>.</sub>
+## The website
+
+This repository publishes as a website with [GitHub Pages](https://docs.github.com/en/pages). The
+site is the single self-contained page [`docs/index.html`](docs/index.html) — no build step, no
+external assets, no Jekyll — plus the speaker slides under [`docs/slides/`](docs/slides/).
+
+To turn it on: **Settings → Pages → Build and deployment → Source: _Deploy from a branch_ →
+Branch: `main`, folder `/docs` → Save.** The site then serves at
+**https://ornl.github.io/RealWorld_FL/** within a minute or two.
+
+See also the [full TPC26 session listing](https://tpc26.org/tpc26-sessions/).
