@@ -68,19 +68,19 @@ Slides are posted where the speaker has shared them.
 | # | Talk | Speaker | Affiliation | Slides |
 | -: | ---- | ------- | ----------- | ------ |
 | 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute | **[PDF](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** |
-| 2 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | **[PDF](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** |
+| 2 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | — |
 | 3 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University | — |
 | 4 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte | — |
 | 5 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA | **[PDF](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** |
 | 6 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | **[PDF](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** |
 | 7 | Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers | Yijiang Li | Argonne National Laboratory | — |
-| 8 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | — |
+| 8 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | **[PDF](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** |
 
 ### Featured slides
 
-Four speakers have shared their decks, posted here with their permission. Read together they trace
-the same arc from a different starting point each time — a hospital network, a research framework,
-a production checklist, and a tri-lab supercomputer run.
+Four speakers have shared their decks, posted here with their permission, listed below in the order
+they were presented. Read together they trace the same arc from a different starting point each time —
+a hospital network, a production checklist, a tri-lab supercomputer run, and a research framework.
 
 **[A Federated Data Network for Brain Health](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** —
 Francis Jeanson, Ontario Brain Institute. NeuroFL connects Brain-CODE and partner sites into a
@@ -88,15 +88,6 @@ federated network for brain-health research, built on three security layers: phy
 (only clients connect to the server), secure orchestration (encrypted transfer, model updates only),
 and network governance (terms of use, modeler approval, local training audits). Motivating the work:
 centralized health data doesn't generalize, underrepresents populations, and often simply cannot move.
-
-**[OmniFed: Towards Configurable Cross-Silo Federated Learning](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** —
-Sahil Tyagi, Oak Ridge National Laboratory. A modular framework built on five swappable abstractions
-— algorithm, communicator, node, topology, engine — so a researcher can reconfigure the whole stack
-from a config file rather than a rewrite: centralized or hierarchical topology, gRPC or MPI, top-k or
-QSGD compression, differential privacy or homomorphic encryption. Evaluated on 16 and 128 Frontier
-nodes, with measured cost tables for each privacy mechanism. Because the next frontier for
-state-of-the-art AI lies behind closed silos, and the research environment spans edge, cloud, and
-leadership-class HPC all at once.
 
 **[Are You Ready for Production Federated Learning?](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** —
 Holger Roth, Chester Chen, and Peter Cnudde, NVIDIA. A five-domain readiness framework — use case &
@@ -112,6 +103,15 @@ Sandia, Livermore, and Los Alamos — over both NVIDIA H100 and AMD MI300A hardw
 that will never appear on the internet. Concrete lessons from real runs: memory pressure during
 aggregation, the need for persistent training state so long jobs can restart, and synchronous
 server/client communication as a genuine failure mode at scale.
+
+**[OmniFed: Towards Configurable Cross-Silo Federated Learning](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** —
+Sahil Tyagi, Oak Ridge National Laboratory. A modular framework built on five swappable abstractions
+— algorithm, communicator, node, topology, engine — so a researcher can reconfigure the whole stack
+from a config file rather than a rewrite: centralized or hierarchical topology, gRPC or MPI, top-k or
+QSGD compression, differential privacy or homomorphic encryption. Evaluated on 16 and 128 Frontier
+nodes, with measured cost tables for each privacy mechanism. Because the next frontier for
+state-of-the-art AI lies behind closed silos, and the research environment spans edge, cloud, and
+leadership-class HPC all at once.
 
 Speakers: to add your deck here, send it to [kotevskao@ornl.gov](mailto:kotevskao@ornl.gov?subject=TPC26%20BOF%20slides).
 
