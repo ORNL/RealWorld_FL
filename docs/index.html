@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOF: Trustworthy Privacy-Preserved Federated Learning for Science — TPC26</title>
+<meta name="description" content="A record of the TPC26 Birds-of-a-Feather session on trustworthy, privacy-preserving federated learning for science. Baltimore, Maryland, June 2, 2026.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%90</text></svg>">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="BOF: Trustworthy Privacy-Preserved Federated Learning for Science">
+<meta property="og:description" content="A TPC26 Birds-of-a-Feather session. The models travel between institutions. The sensitive data never does.">
+
+<style>
+  /* reset */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -moz-text-size-adjust: none; -webkit-text-size-adjust: none; text-size-adjust: none; }
+  body, h1, h2, h3, p, figure, dl, dd, ul, li, table, caption { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  canvas, img, svg { display: block; max-width: 100%; }
+  table { border-collapse: collapse; }
+  button, input, textarea, select { font: inherit; }
+
+  :root {
+    --paper:      #F3F5F4;
+    --surface:    #FFFFFF;
+    --surface-2:  #EAEEEC;
+    --ink:        #10171A;
+    --ink-2:      #4A5A5C;
+    --ink-3:      #748386;
+    --rule:       #D6DEDB;
+    --accent:     #0C6B5B;
+    --accent-ink: #0A5648;
+    --accent-soft: rgba(12, 107, 91, 0.07);
+    --node:       #0C6B5B;
+    --node-dim:   #9FB0AC;
+
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    --fs-display: clamp(2.05rem, 1.2rem + 3.4vw, 3.45rem);
+    --fs-h2:      clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+    --fs-body:    1.0625rem;
+    --fs-small:   0.875rem;
+    --fs-micro:   0.75rem;
+
+    --measure: 66ch;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:      #0D1214;
+      --surface:    #141B1D;
+      --surface-2:  #1B2426;
+      --ink:        #E7EDEA;
+      --ink-2:      #A0AFAB;
+      --ink-3:      #798987;
+      --rule:       #26312F;
+      --accent:     #4FC3A8;
+      --accent-ink: #6FD5BC;
+      --accent-soft: rgba(79, 195, 168, 0.10);
+      --node:       #4FC3A8;
+      --node-dim:   #3B4B49;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #0D1214;
+    --surface:    #141B1D;
+    --surface-2:  #1B2426;
+    --ink:        #E7EDEA;
+    --ink-2:      #A0AFAB;
+    --ink-3:      #798987;
+    --rule:       #26312F;
+    --accent:     #4FC3A8;
+    --accent-ink: #6FD5BC;
+    --accent-soft: rgba(79, 195, 168, 0.10);
+    --node:       #4FC3A8;
+    --node-dim:   #3B4B49;
+  }
+
+  :root[data-theme="light"] {
+    --paper:      #F3F5F4;
+    --surface:    #FFFFFF;
+    --surface-2:  #EAEEEC;
+    --ink:        #10171A;
+    --ink-2:      #4A5A5C;
+    --ink-3:      #748386;
+    --rule:       #D6DEDB;
+    --accent:     #0C6B5B;
+    --accent-ink: #0A5648;
+    --accent-soft: rgba(12, 107, 91, 0.07);
+    --node:       #0C6B5B;
+    --node-dim:   #9FB0AC;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible,
+  .join-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding-block: 1rem;
+  }
+  .masthead .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .masthead .mark {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead .mark b { color: var(--accent); font-weight: 600; }
+
+  /* ---------- hero ---------- */
+
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  @media (max-width: 900px) {
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: var(--fs-display);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    text-wrap: balance;
+    margin-block: 0.8rem 1.1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero .thesis {
+    font-size: 1.1875rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 34ch;
+    text-wrap: pretty;
+  }
+  .held {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    background: var(--accent-soft);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+  }
+  .held .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
+  .figure {
+    display: grid;
+    gap: 0.85rem;
+  }
+  #lattice {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .figure figcaption {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    line-height: 1.6;
+    color: var(--ink-3);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .figure figcaption b { color: var(--ink-2); font-weight: 500; }
+
+  /* ---------- vitals ---------- */
+
+  .vitals {
+    border-block: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .vitals dl {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--rule);
+  }
+  @media (max-width: 760px) {
+    .vitals dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .vitals div {
+    background: var(--surface);
+    padding: 1.15rem var(--gutter);
+    display: grid;
+    gap: 0.3rem;
+    align-content: start;
+  }
+  .vitals dt {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .vitals dd {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .vitals dd span { display: block; color: var(--ink-2); font-size: var(--fs-small); }
+
+  /* ---------- sections ---------- */
+
+  section.band { padding-block: clamp(3rem, 6vw, 4.75rem); }
+  section.band + section.band { border-top: 1px solid var(--rule); }
+
+  .band-head {
+    display: grid;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .band-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: var(--fs-h2);
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .prose p {
+    max-width: var(--measure);
+    text-wrap: pretty;
+  }
+  .prose p + p { margin-top: 1rem; }
+  .lede { font-size: 1.125rem; }
+
+  /* ---------- threads ---------- */
+
+  .threads {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2.25rem;
+  }
+  .threads article {
+    background: var(--surface);
+    padding: 1.4rem 1.5rem 1.6rem;
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+  }
+  .threads h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .threads p {
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  /* ---------- organizers ---------- */
+
+  .organizers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+  }
+  .organizers li {
+    border-top: 2px solid var(--accent);
+    padding-top: 0.9rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+  .organizers .name {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+  .organizers .role {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .organizers .affil { font-size: var(--fs-small); color: var(--ink-2); }
+
+  /* ---------- program ---------- */
+
+  .program-scroll { overflow-x: auto; }
+  .program {
+    width: 100%;
+    min-width: 34rem;
+    text-align: left;
+  }
+  .program caption {
+    text-align: left;
+    color: var(--ink-3);
+    font-size: var(--fs-small);
+    padding-bottom: 1rem;
+    max-width: var(--measure);
+  }
+  .program th {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink-3);
+    padding: 0 0 0.7rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .program td {
+    padding: 1rem 1.25rem 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: baseline;
+  }
+  .program tr:last-child td { border-bottom: 0; }
+  .program td:last-child, .program th:last-child { padding-right: 0; }
+
+  .program .num {
+    font-family: var(--mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+    width: 3.5rem;
+    padding-right: 0.5rem;
+  }
+  .program .talk {
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 32rem;
+    text-wrap: pretty;
+  }
+  .program .who { font-size: var(--fs-small); color: var(--ink); white-space: nowrap; }
+  .program .org { font-size: var(--fs-small); color: var(--ink-2); }
+  .program tbody tr:hover .num { color: var(--accent); }
+
+  /* ---------- contact ---------- */
+
+  .contact { background: var(--surface); border-top: 1px solid var(--rule); }
+  .contact .wrap {
+    padding-block: clamp(3rem, 6vw, 4.75rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(1.75rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  @media (max-width: 780px) {
+    .contact .wrap { grid-template-columns: minmax(0, 1fr); }
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin-bottom: 0.85rem;
+  }
+  .contact .eyebrow { margin-bottom: 0.75rem; }
+  .contact p { color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
+
+  .join-btn {
+    display: inline-grid;
+    gap: 0.35rem;
+    justify-items: start;
+    padding: 1.1rem 1.5rem;
+    border: 1px solid var(--accent);
+    background: var(--accent-soft);
+    text-decoration: none;
+    transition: background 140ms ease;
+  }
+  .join-btn:hover { background: transparent; }
+  .join-btn .label {
+    font-family: var(--mono);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .join-btn .addr {
+    font-family: var(--mono);
+    font-size: 1.0625rem;
+    color: var(--accent-ink);
+    word-break: break-all;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer { border-top: 1px solid var(--rule); padding-block: 2rem 2.75rem; }
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  footer p { font-size: var(--fs-small); color: var(--ink-3); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mark">TPC26 &nbsp;·&nbsp; <b>Birds&#8209;of&#8209;a&#8209;Feather</b></div>
+    <div class="eyebrow">Baltimore, Maryland &nbsp;·&nbsp; May 31 – June 3, 2026</div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Infrastructure to Enable Shared Data &amp; Computing</p>
+      <h1>Trustworthy, <em>privacy&#8209;preserved</em> federated learning for science</h1>
+      <p class="thesis">The models travel between institutions. The sensitive data never does.</p>
+      <p class="held"><span class="dot"></span> Session held · Tuesday, June 2, 2026</p>
+    </div>
+
+    <figure class="figure">
+      <canvas id="lattice" width="520" height="520" role="img"
+              aria-label="Diagram: eight institutional nodes surround a central aggregator. Model updates flow inward from each node; the local datasets stay in place."></canvas>
+      <figcaption>
+        Eight silos, one aggregator. Only <b>model updates</b> cross the wire.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="vitals">
+  <dl>
+    <div>
+      <dt>When</dt>
+      <dd>Tuesday, June 2, 2026<span>14:00</span></dd>
+    </div>
+    <div>
+      <dt>Where</dt>
+      <dd>Annapolis &amp; Columbia<span>Baltimore, Maryland</span></dd>
+    </div>
+    <div>
+      <dt>Format</dt>
+      <dd>Birds-of-a-Feather<span>9 lightning talks + discussion</span></dd>
+    </div>
+    <div>
+      <dt>Track</dt>
+      <dd>Shared Infrastructure<span>Trillion Parameter Consortium</span></dd>
+    </div>
+  </dl>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow">The session</p>
+      <h2>Bringing together the people building federated learning for scientific workloads</h2>
+    </div>
+    <div class="prose">
+      <p class="lede">
+        Federated learning offers a promising approach for enabling collaborative scientific discovery
+        while preserving the privacy of sensitive data across institutions. This BOF brought together
+        researchers and practitioners to discuss trustworthy, privacy-preserving federated learning
+        frameworks tailored for scientific workloads.
+      </p>
+      <p>
+        The discussion focused on challenges such as secure model aggregation, data confidentiality,
+        system scalability, and integration with distributed research infrastructures. Our objectives
+        were to identify common requirements, share emerging techniques, and foster collaborations
+        within the TPC community — work that continues past the session itself.
+      </p>
+      <p>
+        The session speaks to anyone in TPC working on distributed computing, secure data sharing, and
+        scalable AI methods that support cross-institutional scientific research.
+      </p>
+    </div>
+
+    <div class="threads">
+      <article>
+        <h3>Secure model aggregation</h3>
+        <p>Combining updates from many institutions without any single party — including the aggregator — learning more than it should.</p>
+      </article>
+      <article>
+        <h3>Data confidentiality</h3>
+        <p>Differential privacy, ownership protection, and the guarantees a data steward actually needs before agreeing to participate.</p>
+      </article>
+      <article>
+        <h3>System scalability</h3>
+        <p>What breaks when a federation spans supercomputers, and what it takes to train a foundation model across facilities.</p>
+      </article>
+      <article>
+        <h3>Integration with research infrastructure</h3>
+        <p>Fitting federated workflows into the authentication, allocation, and data-governance realities of national labs and hospitals.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow">Organized by</p>
+      <h2>Session leads</h2>
+    </div>
+    <ul class="organizers">
+      <li>
+        <span class="role">Lead organizer</span>
+        <span class="name">Olivera Kotevska</span>
+        <span class="affil">Oak Ridge National Laboratory</span>
+      </li>
+      <li>
+        <span class="role">Co-organizer</span>
+        <span class="name">Kibaek Kim</span>
+        <span class="affil">Argonne National Laboratory</span>
+      </li>
+      <li>
+        <span class="role">Co-organizer</span>
+        <span class="name">Ravi Madduri</span>
+        <span class="affil">Argonne National Laboratory</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow">Lightning talks</p>
+      <h2>Running order</h2>
+    </div>
+    <div class="program-scroll">
+      <table class="program">
+        <caption>Nine talks, spanning brain-health networks, cross-facility training on supercomputers, and production federated learning in industry.</caption>
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Talk</th>
+            <th scope="col">Speaker</th>
+            <th scope="col">Affiliation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">01</td>
+            <td class="talk">NeuroFL: OBI’s Intelligence Network for Brain Health</td>
+            <td class="who">Francis Jeanson</td>
+            <td class="org">Ontario Brain Institute</td>
+          </tr>
+          <tr>
+            <td class="num">02</td>
+            <td class="talk">OmniFed: Towards Configurable Cross-Silo Federated Learning</td>
+            <td class="who">Sahil Tyagi</td>
+            <td class="org">Oak Ridge National Laboratory</td>
+          </tr>
+          <tr>
+            <td class="num">03</td>
+            <td class="talk">Differentially Private Federated Averaging with James–Stein Estimator</td>
+            <td class="who">Minseok Ryu</td>
+            <td class="org">Arizona State University</td>
+          </tr>
+          <tr>
+            <td class="num">04</td>
+            <td class="talk">Socio-Technical Infrastructure: Operationalizing FL Systems</td>
+            <td class="who">Mohammed Manzari</td>
+            <td class="org">Deloitte</td>
+          </tr>
+          <tr>
+            <td class="num">05</td>
+            <td class="talk">Are You Ready for Production Federated Learning?</td>
+            <td class="who">Holger Roth</td>
+            <td class="org">NVIDIA</td>
+          </tr>
+          <tr>
+            <td class="num">06</td>
+            <td class="talk">Federated LLM Training Across NNSA Labs</td>
+            <td class="who">Max Carlson</td>
+            <td class="org">Sandia National Laboratories</td>
+          </tr>
+          <tr>
+            <td class="num">07</td>
+            <td class="talk">Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers</td>
+            <td class="who">Yijiang Li</td>
+            <td class="org">Argonne National Laboratory</td>
+          </tr>
+          <tr>
+            <td class="num">08</td>
+            <td class="talk">Towards Trustworthy Federated AI: Privacy, Ownership Protection, and Model Editing</td>
+            <td class="who">Olivera Kotevska</td>
+            <td class="org">Oak Ridge National Laboratory</td>
+          </tr>
+          <tr>
+            <td class="num">09</td>
+            <td class="talk">The Next Frontier: Federated AI with Flower</td>
+            <td class="who">William Lindskog-Munzing</td>
+            <td class="org">Flower Labs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Get involved</p>
+      <h2>The conversation didn’t end in Baltimore.</h2>
+      <p>
+        We are continuing to build a community around trustworthy, privacy-preserving federated learning
+        for science — shared requirements, common benchmarks, and cross-institutional pilots. If you
+        work in this space, or want to bring your facility’s data into a federation without giving it up,
+        get in touch.
+      </p>
+    </div>
+    <a class="join-btn" href="mailto:kotevskao@ornl.gov?subject=TPC26%20BOF%3A%20Trustworthy%20Privacy-Preserved%20Federated%20Learning">
+      <span class="label">Email the organizers</span>
+      <span class="addr">kotevskao@ornl.gov</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Trillion Parameter Consortium 2026 · Baltimore, Maryland</p>
+    <p><a href="https://tpc26.org/tpc26-sessions/">Full TPC26 session listing →</a></p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('lattice');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+
+    var N = 8;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function css(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.width * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return rect.width;
+    }
+
+    var size = resize();
+    window.addEventListener('resize', function () {
+      size = resize();
+      if (reduced) draw(0);
+    });
+
+    function draw(t) {
+      var s = size;
+      var cx = s / 2, cy = s / 2;
+      var R = s * 0.36;
+      var accent = css('--node') || '#0C6B5B';
+      var dim = css('--node-dim') || '#9FB0AC';
+
+      ctx.clearRect(0, 0, s, s);
+
+      var pts = [];
+      for (var i = 0; i < N; i++) {
+        var a = (i / N) * Math.PI * 2 - Math.PI / 2;
+        pts.push({ x: cx + Math.cos(a) * R, y: cy + Math.sin(a) * R });
+      }
+
+      // spokes
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = dim;
+      ctx.globalAlpha = 0.55;
+      for (var j = 0; j < N; j++) {
+        ctx.beginPath();
+        ctx.moveTo(pts[j].x, pts[j].y);
+        ctx.lineTo(cx, cy);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      // local data: a small cluster of dots pinned at each silo — never moves
+      for (var k = 0; k < N; k++) {
+        var p = pts[k];
+        ctx.fillStyle = dim;
+        for (var d = 0; d < 5; d++) {
+          var ang = (d / 5) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.arc(p.x + Math.cos(ang) * 11, p.y + Math.sin(ang) * 11, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 5.5, 0, Math.PI * 2);
+        ctx.fillStyle = accent;
+        ctx.fill();
+      }
+
+      // update packets travelling inward
+      for (var m = 0; m < N; m++) {
+        var phase = reduced ? 0.5 : ((t / 2600) + m / N) % 1;
+        var e = phase < 0.5 ? 2 * phase * phase : 1 - Math.pow(-2 * phase + 2, 2) / 2;
+        var px = pts[m].x + (cx - pts[m].x) * e;
+        var py = pts[m].y + (cy - pts[m].y) * e;
+        ctx.globalAlpha = reduced ? 0.9 : Math.sin(phase * Math.PI);
+        ctx.beginPath();
+        ctx.arc(px, py, 3, 0, Math.PI * 2);
+        ctx.fillStyle = accent;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // aggregator
+      ctx.beginPath();
+      ctx.arc(cx, cy, s * 0.075, 0, Math.PI * 2);
+      ctx.strokeStyle = accent;
+      ctx.lineWidth = 1.25;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, s * 0.028, 0, Math.PI * 2);
+      ctx.fillStyle = accent;
+      ctx.fill();
+
+      if (!reduced) requestAnimationFrame(draw);
+    }
+
+    if (reduced) draw(0);
+    else requestAnimationFrame(draw);
+  })();
+</script>
+</body>
+</html>
