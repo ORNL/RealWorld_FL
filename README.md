@@ -69,12 +69,12 @@ Slides are posted where the speaker has shared them.
 | -: | ---- | ------- | ----------- | ------ |
 | 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute | **[PDF](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** |
 | 2 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | — |
-| 3 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University | — |
-| 4 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte | — |
-| 5 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA | **[PDF](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** |
-| 6 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | **[PDF](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** |
-| 7 | Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers | Yijiang Li | Argonne National Laboratory | — |
-| 8 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | **[PDF](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** |
+| 3 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte | — |
+| 4 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA | **[PDF](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** |
+| 5 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | **[PDF](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** |
+| 6 | Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers | Yijiang Li | Argonne National Laboratory | — |
+| 7 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | **[PDF](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** |
+| 8 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University | — |
 
 ### Featured slides
 
