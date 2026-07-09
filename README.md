@@ -67,22 +67,43 @@ Slides are posted where the speaker has shared them.
 
 | # | Talk | Speaker | Affiliation | Slides |
 | -: | ---- | ------- | ----------- | ------ |
-| 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute | — |
+| 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute | **[PDF](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** |
 | 2 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | — |
 | 3 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University | — |
 | 4 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte | — |
 | 5 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA | **[PDF](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** |
-| 6 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | — |
+| 6 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | **[PDF](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** |
 | 7 | Scalable Cross-Facility Federated Learning for Scientific Foundation Models on Multiple Supercomputers | Yijiang Li | Argonne National Laboratory | — |
 | 8 | Towards Trustworthy Federated AI: Privacy, Ownership Protection, and Model Editing | Olivera Kotevska | Oak Ridge National Laboratory | — |
 | 9 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | — |
 
-**Featured slides.** Holger Roth, Chester Chen, and Peter Cnudde (NVIDIA) shared their deck,
-[*Are You Ready for Production Federated Learning?*](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf) —
-a five-domain readiness framework (use case & value, governance & legal, data architecture, privacy &
-security, technology & operations) for judging whether a federation can move from pilot to production.
-Its closing question is a good one to carry forward: don't ask only *"can we train it?"* but *"can we
-operate it, audit it, and change it safely?"* Posted with the author's permission.
+### Featured slides
+
+Three speakers have shared their decks, posted here with their permission. Read together they trace
+the same arc from a different starting point each time — a hospital network, a production checklist,
+and a tri-lab supercomputer run.
+
+**[A Federated Data Network for Brain Health](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** —
+Francis Jeanson, Ontario Brain Institute. NeuroFL connects Brain-CODE and partner sites into a
+federated network for brain-health research, built on three security layers: physical separation
+(only clients connect to the server), secure orchestration (encrypted transfer, model updates only),
+and network governance (terms of use, modeler approval, local training audits). Motivating the work:
+centralized health data doesn't generalize, underrepresents populations, and often simply cannot move.
+
+**[Are You Ready for Production Federated Learning?](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** —
+Holger Roth, Chester Chen, and Peter Cnudde, NVIDIA. A five-domain readiness framework — use case &
+value, governance & legal, data architecture, privacy & security, technology & operations — for judging
+whether a federation can move from pilot to production. Assess each domain with evidence, not opinions;
+evidence gaps become remediation plans or a reason not to scale yet. The closing question is worth
+carrying forward: don't ask only *"can we train it?"* but *"can we operate it, audit it, and change it
+safely?"*
+
+**[Federated LLM Training Across NNSA Labs](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** —
+Max Carlson, Sandia National Laboratories. Continued pretraining of Llama 3.x at 1B, 8B, and 70B across
+Sandia, Livermore, and Los Alamos — over both NVIDIA H100 and AMD MI300A hardware — to reach DOE data
+that will never appear on the internet. Concrete lessons from real runs: memory pressure during
+aggregation, the need for persistent training state so long jobs can restart, and synchronous
+server/client communication as a genuine failure mode at scale.
 
 Speakers: to add your deck here, send it to [kotevskao@ornl.gov](mailto:kotevskao@ornl.gov?subject=TPC26%20BOF%20slides).
 
