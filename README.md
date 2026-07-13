@@ -76,43 +76,6 @@ Slides are posted where the speaker has shared them.
 | 7 | OmniFed: Towards Configurable Cross-Silo Federated Learning | Sahil Tyagi | Oak Ridge National Laboratory | **[PDF](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** |
 | 8 | Differentially Private Federated Averaging with James–Stein Estimator | Minseok Ryu | Arizona State University | — |
 
-### Featured slides
-
-Four speakers have shared their decks, posted here with their permission, listed below in the order
-they were presented. Read together they trace the same arc from a different starting point each time —
-a hospital network, a production checklist, a tri-lab supercomputer run, and a research framework.
-
-**[A Federated Data Network for Brain Health](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** —
-Francis Jeanson, Ontario Brain Institute. NeuroFL connects Brain-CODE and partner sites into a
-federated network for brain-health research, built on three security layers: physical separation
-(only clients connect to the server), secure orchestration (encrypted transfer, model updates only),
-and network governance (terms of use, modeler approval, local training audits). Motivating the work:
-centralized health data doesn't generalize, underrepresents populations, and often simply cannot move.
-
-**[Are You Ready for Production Federated Learning?](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** —
-Holger Roth, Chester Chen, and Peter Cnudde, NVIDIA. A five-domain readiness framework — use case &
-value, governance & legal, data architecture, privacy & security, technology & operations — for judging
-whether a federation can move from pilot to production. Assess each domain with evidence, not opinions;
-evidence gaps become remediation plans or a reason not to scale yet. The closing question is worth
-carrying forward: don't ask only *"can we train it?"* but *"can we operate it, audit it, and change it
-safely?"*
-
-**[Federated LLM Training Across NNSA Labs](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** —
-Max Carlson, Sandia National Laboratories. Continued pretraining of Llama 3.x at 1B, 8B, and 70B across
-Sandia, Livermore, and Los Alamos — over both NVIDIA H100 and AMD MI300A hardware — to reach DOE data
-that will never appear on the internet. Concrete lessons from real runs: memory pressure during
-aggregation, the need for persistent training state so long jobs can restart, and synchronous
-server/client communication as a genuine failure mode at scale.
-
-**[OmniFed: Towards Configurable Cross-Silo Federated Learning](docs/slides/tyagi-omnifed-configurable-cross-silo-federated-learning.pdf)** —
-Sahil Tyagi, Oak Ridge National Laboratory. A modular framework built on five swappable abstractions
-— algorithm, communicator, node, topology, engine — so a researcher can reconfigure the whole stack
-from a config file rather than a rewrite: centralized or hierarchical topology, gRPC or MPI, top-k or
-QSGD compression, differential privacy or homomorphic encryption. Evaluated on 16 and 128 Frontier
-nodes, with measured cost tables for each privacy mechanism. Because the next frontier for
-state-of-the-art AI lies behind closed silos, and the research environment spans edge, cloud, and
-leadership-class HPC all at once.
-
 Speakers: to add your deck here, send it to [kotevskao@ornl.gov](mailto:kotevskao@ornl.gov?subject=TPC26%20BOF%20slides).
 
 ## Get involved
