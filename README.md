@@ -15,7 +15,7 @@
 <p align="center"><i>The models travel between institutions. The sensitive data never does.</i></p>
 
 <p align="center">
-  <b><a href="https://ornl.github.io/RealWorld_FL/">Visit the session website →</a></b>
+  <b>Session website → <a href="https://ornl.github.io/RealWorld_FL/">ornl.github.io/RealWorld_FL</a></b>
 </p>
 
 ---
@@ -89,14 +89,8 @@ federation without giving it up, get in touch.
 
 ---
 
-## The website
-
-**https://ornl.github.io/RealWorld_FL/**
-
-The session page is published with [GitHub Pages](https://docs.github.com/en/pages) from the
-[`docs/`](docs/) folder on `main`. It is a single self-contained page,
-[`docs/index.html`](docs/index.html) — no build step, no external assets, no Jekyll — alongside the
-speaker slides in [`docs/slides/`](docs/slides/). Edit the file, push to `main`, and the site
-redeploys on its own.
-
-See also the [full TPC26 session listing](https://tpc26.org/tpc26-sessions/).
+<sub>The session website above is published with [GitHub Pages](https://docs.github.com/en/pages) from
+[`docs/`](docs/) on `main` — a single self-contained page, [`docs/index.html`](docs/index.html), with
+no build step, plus the speaker slides in [`docs/slides/`](docs/slides/). Edit, push to `main`, and the
+site redeploys on its own. See also the
+[full TPC26 session listing](https://tpc26.org/tpc26-sessions/).</sub>
