@@ -68,7 +68,7 @@ Slides are posted where the speaker has shared them.
 | # | Talk | Speaker | Affiliation | Slides |
 | -: | ---- | ------- | ----------- | ------ |
 | 1 | NeuroFL: OBI's Intelligence Network for Brain Health | Francis Jeanson | Ontario Brain Institute | **[PDF](docs/slides/jeanson-neurofl-federated-data-network-for-brain-health.pdf)** |
-| 2 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | — |
+| 2 | The Next Frontier: Federated AI with Flower | William Lindskog-Munzing | Flower Labs | **[PDF](docs/slides/lindskog-munzing-next-frontier-federated-ai-with-flower.pdf)** |
 | 3 | Socio-Technical Infrastructure: Operationalizing FL Systems | Mohammed Manzari | Deloitte | — |
 | 4 | Are You Ready for Production Federated Learning? | Holger Roth | NVIDIA | **[PDF](docs/slides/roth-are-you-ready-for-production-federated-learning.pdf)** |
 | 5 | Federated LLM Training Across NNSA Labs | Max Carlson | Sandia National Laboratories | **[PDF](docs/slides/carlson-federated-llm-training-across-nnsa-labs.pdf)** |
